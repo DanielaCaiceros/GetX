@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(CounterController());
   runApp(const MyApp());
 }
 
@@ -21,13 +22,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends GetView<CounterController> {
   const MyHomePage({super.key, required this.title});
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    final CounterController controller = Get.put(CounterController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
