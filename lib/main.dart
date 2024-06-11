@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  Get.put(CounterController());
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends GetView<CounterController> {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
+    Get.put(CounterController());
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
