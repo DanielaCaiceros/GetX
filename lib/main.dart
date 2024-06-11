@@ -27,9 +27,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Inicializa el controlador
     final CounterController controller = Get.put(CounterController());
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -42,14 +40,10 @@ class MyHomePage extends StatelessWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            GetBuilder<CounterController>(
-              builder: (controller) {
-                return Text(
+            Obx(() => Text(
                   '${controller.counter}',
                   style: Theme.of(context).textTheme.headlineMedium,
-                );
-              },
-            ),
+                )),
           ],
         ),
       ),
@@ -63,10 +57,9 @@ class MyHomePage extends StatelessWidget {
 }
 
 class CounterController extends GetxController {
-  var counter = 0;
+  RxInt counter = 0.obs;
 
   void increment() {
     counter++;
-    update();
   }
 }
